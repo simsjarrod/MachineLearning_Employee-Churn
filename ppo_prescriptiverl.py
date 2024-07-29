@@ -51,7 +51,7 @@ class CSVEnv(gym.Env):
     def calculate_reward(self, action):
         satisfaction_before = self.data.loc[self.current_step, 'JobSatisfaction']
         
-        # Implement a hypothetical model for satisfaction change
+        # Hypothetical model for satisfaction change
         if action == 0:  # Increase salary
             satisfaction_after = satisfaction_before + 0.1
         elif action == 1:  # Increase stock options
@@ -72,7 +72,7 @@ class CSVEnv(gym.Env):
         pass
 
 # Load and preprocess your data to include the necessary columns.
-df = pd.read_csv('attrition_data_clean.csv')
+df = pd.read_csv('high_risk_employees.csv')
 df.to_csv('ppo_data.csv', index=False)
 
 # Use the custom environment
@@ -83,12 +83,19 @@ check_env(env)  # Check the environment to make sure it is valid
 model = PPO('MlpPolicy', env, verbose=1)
 model.learn(total_timesteps=10000)
 
+# List to store action recommendations
+recommendations = []
+
 # Use the trained agent to find the best action for each employee
 for i in range(len(df)):
     state = env.reset()[0]  # Ensure to use the state only
     action, _ = model.predict(state)
-    action_names = ["Increase Salary", "Increase Stock Options", "Promote Individual"]
+    action_names = ["Increase Salary 10%", "Increase Stock Options 1 level", "Promote Individual 1 level"]
     action_name = action_names[action]
-    print(f"Best action to retain employee {i+1}: {action_name}")
+    recommendations.append({'Employee': i+1, 'Action': action_name})
+
+# Convert recommendations to DataFrame and export to CSV
+recommendations_df = pd.DataFrame(recommendations)
+recommendations_df.to_csv('high_risk_employee_action_recs.csv', index=False)
 
 env.close()
