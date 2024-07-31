@@ -1,4 +1,5 @@
 import numpy as np
+import shap
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 import xgboost as xgb
@@ -32,7 +33,7 @@ print(strat_test_set.head())
 '''
 
 # Train the XGBoost Classifier
-clf = xgb.XGBClassifier(random_state=123, use_label_encoder=False, eval_metric='mlogloss')
+clf = xgb.XGBClassifier(random_state=123, eval_metric='mlogloss')
 clf.fit(X_train, y_train)
 
 # Predict on the test set
@@ -52,3 +53,23 @@ print("\nAccuracy:", accuracy)
 print("F1 Score:", f1)
 print("Precision:", precision)
 print("Recall:", recall)
+
+# Predict probabilities on the entire dataset
+y_proba = clf.predict_proba(X)[:, 1]  # Get probabilities for the '1' class
+
+# Set a threshold for high attrition risk
+threshold = .95
+high_risk_employees = df[y_proba > threshold]
+
+# Export the list of high-risk employees to a CSV file
+high_risk_employees.to_csv('high_risk_employees.csv', index=False)
+
+# Compute SHAP values and plot feature importance
+explainer = shap.Explainer(clf)
+shap_values = explainer(X_train)
+
+# Plot feature importance
+shap.summary_plot(shap_values, X_train, plot_type="bar")
+plt.title('Feature Importance 
+plt.savefig('feature_importance.png'
+plt.show()
