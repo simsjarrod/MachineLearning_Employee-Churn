@@ -32,7 +32,7 @@ class CSVEnv(gym.Env):
         elif action == 1:
             self.data.loc[self.current_step, 'StockOptionLevel'] += 1  # Increase employee stock options
         elif action == 2:
-            self.data.loc[self.current_step, 'JobLevel'] += 1  # Promote individual one step
+            self.data.loc[self.current_step, 'JobLevel'] *= 0  # Eliminate overtime
 
         reward = self.calculate_reward(action)
         
@@ -53,10 +53,10 @@ class CSVEnv(gym.Env):
         
         # Hypothetical model for satisfaction change
         if action == 0:  # Increase salary
-            satisfaction_after = satisfaction_before + 0.1
-        elif action == 1:  # Increase stock options
             satisfaction_after = satisfaction_before + 0.05
-        elif action == 2:  # Promote individual
+        elif action == 1:  # Increase stock options
+            satisfaction_after = satisfaction_before + 0.1
+        elif action == 2:  # Reduce overtime
             satisfaction_after = satisfaction_before + 0.2
         
         reward = satisfaction_after - satisfaction_before
@@ -71,7 +71,7 @@ class CSVEnv(gym.Env):
     def close(self):
         pass
 
-# Load and preprocess your data to include the necessary columns.
+# Load and preprocess high risk employee csv
 df = pd.read_csv('high_risk_employees.csv')
 df.to_csv('ppo_data.csv', index=False)
 
@@ -90,7 +90,7 @@ recommendations = []
 for i in range(len(df)):
     state = env.reset()[0]  # Ensure to use the state only
     action, _ = model.predict(state)
-    action_names = ["Increase Salary 10%", "Increase Stock Options 1 level", "Promote Individual 1 level"]
+    action_names = ["Increase Salary 10%", "Increase Stock Options 1 level", "Eliminate Overtime"]
     action_name = action_names[action]
     recommendations.append({'Employee': i+1, 'Action': action_name})
 
