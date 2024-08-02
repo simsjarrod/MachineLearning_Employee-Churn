@@ -16,9 +16,23 @@ Employee turnover can adversely impact an organization’s financial outlook and
         1. Importing necessary data and libraries
         2. Describing data using summary statistics
         3. Defining correlations between variables and identifying patterns in data using visuals
+
 4. **Model Selection & Training**
 5. **Analysis of Results**
 
+**Key Insights**
+### Exploratory Analysis
+
+Figure 2 illustrates that younger individuals are more prone to leaving the company compared to their older counterparts. The median age for those who experienced positive attrition was 32 years, whereas it was 36 years for those who did not leave. For individuals who left the company, 50% were between the ages
+of 28 and 39, while 50% of those who stayed were between 31 and 43 years old. This clear disparity underscores the greater likelihood of younger employees departing from the company.
+
+
+![age_attrition_plot](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/plot_age_attrition.png)
+
+**Training and Testing**
+
+The dataset was split into a training set that consist of 80% and a test set of
+20%. Each model was trained on the same training and test dataset. 
 ## **Project Setup and Installation:**
 1. Create a virtual environment
    ```
