@@ -19,8 +19,24 @@ Employee turnover can adversely impact an organization’s financial outlook and
 4. **Model Selection & Training**
 5. **Analysis of Results**
 
-## Getting Started
-### Ensure that you have the following installed:
+## **Project Setup and Installation:**
+1. Create a virtual environment
+   ```
+   python3 -m venv ds-venv
+   ```
+
+2. Activate the environment
+     - On Windows:
+      ```
+      ds-venv\Scripts\Activate
+      ```
+     - On macOS and Linux
+      ```
+      source env/bin/activate
+      ```
+
+
+### Ensure that you have the following packages installed:
 - Python 3
 - Jupyter Notebook
 - Python libraries listed in [reqirements.txt](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/requirements.txt)

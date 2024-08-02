@@ -5,4 +5,7 @@ matplotlib
 seaborn
 jupyterlab
 scikit-learn
-
+XGBoost
+SHAP
+Gymnasium
+Stable_Baselines3
