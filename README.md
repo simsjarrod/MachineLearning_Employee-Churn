@@ -20,7 +20,7 @@ Employee turnover can adversely impact an organization’s financial outlook and
 4. **Model Selection & Training**
 5. **Analysis of Results**
 
-**Key Insights**
+## Key Insights
 ### Exploratory Analysis
 
 Figure 2 illustrates that younger individuals are more prone to leaving the company compared to their older counterparts. The median age for those who experienced positive attrition was 32 years, whereas it was 36 years for those who did not leave. For individuals who left the company, 50% were between the ages
@@ -28,6 +28,20 @@ of 28 and 39, while 50% of those who stayed were between 31 and 43 years old. Th
 
 
 ![age_attrition_plot](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/plot_age_attrition.png)
+
+An employee’s monthly income showed a correlation with attrition. Figure 6 below depicts the income distribution differences between employees who left the company and those who remained. Notably, 50% of the employees who left had a monthly salary ranging from $2,373 to $5,916, with a median salary of $3,202. In contrast, 50% of the employees who stayed earned between $3,211 and $8,834 per month, with a median salary of $5,204.
+
+![salary_attrition_plot](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/salary_attrition_plot.png)
+
+Departments within the company were analyzed to identify those with higher attrition rates. The code below creates a DataFrame that combines the ’Attrition’ and ’Department’ fields and calculates the percentage of attrition for each department. Figure 3 illustrates that, although the three major departments had relatively similar attrition rates, sales and human resources experienced notably higher rates compared to research and development, with attrition rates of 20.6% and 19.0%, respectively. 
+
+
+![department_attrition_plot](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/department_attrition_plot.png)
+
+
+XGBoost classifier feature importance plot.
+
+![XGBoost_feature_importance_plot](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/xgboost_feature_importance_plot.png)
 
 **Training and Testing**
 
