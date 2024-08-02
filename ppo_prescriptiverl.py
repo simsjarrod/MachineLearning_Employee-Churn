@@ -32,7 +32,7 @@ class CSVEnv(gym.Env):
         elif action == 1:
             self.data.loc[self.current_step, 'StockOptionLevel'] += 1  # Increase employee stock options
         elif action == 2:
-            self.data.loc[self.current_step, 'JobLevel'] *= 0  # Eliminate overtime
+            self.data.loc[self.current_step, 'OverTime'] *= 0  # Eliminate overtime
 
         reward = self.calculate_reward(action)
         

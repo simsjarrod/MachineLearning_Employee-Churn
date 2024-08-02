@@ -20,7 +20,7 @@ Employee turnover can adversely impact an organization’s financial outlook and
 4. **Model Selection & Training**
 5. **Analysis of Results**
 
-### Exploratory Analysis
+## Exploratory Analysis
 
 Figure 2 illustrates that younger individuals are more prone to leaving the company compared to their older counterparts. The median age for those who experienced positive attrition was 32 years, whereas it was 36 years for those who did not leave. For individuals who left the company, 50% were between the ages
 of 28 and 39, while 50% of those who stayed were between 31 and 43 years old. This clear disparity underscores the greater likelihood of younger employees departing from the company.
@@ -46,6 +46,8 @@ The dataset was split into a training set that consist of 80% and a test set of 
 
 This project evaluated four models to classify employee attrition, decision trees, KNN, XGBoost, and random forest. Below is a comparison of their performance:
 
+**Classifier Model Development**
+
 ![classifier_performance](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/classifier_performance_eval.png)
 
 Extreme Gradient Boosting (XGBoost) is a technique that utilizes a similar approach to decision trees but instead of a single tree, builds multiple trees and Title Suppressed Due to Excessive Length 13 iterates on each tree by correcting errors made by earlier trees through gradient descent boosting. The XGBClassifier class from the XGBoost library was employed to implement a XGBoost model on the attrition dataset.
@@ -55,6 +57,8 @@ Extreme Gradient Boosting (XGBoost) is a technique that utilizes a similar appro
 XGBoost classifier feature importance plot.
 
 ![XGBoost_feature_importance_plot](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/xgboost_feature_importance_plot.png)
+
+**Prescriptive Model Development**
 
 Proximal Policy Optimization (PPO) represents a category of reinforcement learning algorithms. These algorithms are notable for their effectiveness across a diverse array of reinforcement learning scenarios. PPO stands out due to its straightforward implementation, requiring fewer hyperparameters for tuning compared to other prevalent methods like Q-learning. This simplicity makes PPO an attractive option for various applications in the field. See PPO prescriptive model implementation at:[ppo_prescriptiverl.py](https://github.com/simsjarrod/MachineLearning_Employee-Churn/blob/master/ppo_prescriptiverl.py). See PPO model output below:
 

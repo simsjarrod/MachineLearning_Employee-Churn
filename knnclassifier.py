@@ -32,7 +32,7 @@ print(strat_test_set.head())
 '''
 
 # Train the KNN Classifier
-k=20
+k=20 # Set number of neighbors
 clf = KNeighborsClassifier(n_neighbors=k)
 clf.fit(X_train, y_train)
 
