@@ -3,6 +3,7 @@ import shap
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 import xgboost as xgb
+import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 
 
@@ -70,6 +71,4 @@ shap_values = explainer(X_train)
 
 # Plot feature importance
 shap.summary_plot(shap_values, X_train, plot_type="bar")
-plt.title('Feature Importance 
-plt.savefig('feature_importance.png'
 plt.show()
